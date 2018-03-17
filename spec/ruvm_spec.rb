@@ -2,6 +2,15 @@ require 'spec_helper'
 require './ruvm'
 
 describe 'ruvm' do
+  describe '#parse' do
+    subject { parse program }
+
+    let(:program) { "this is a 723
+                    test program 100
+                    5.51 versions" }
+    it { is_expected.to eq [[:this, :is, :a, 723], [:test, :program, 100], [5, :versions]] }
+  end
+
   describe '#tokenize' do
     subject { tokenize program }
 
