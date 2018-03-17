@@ -1,7 +1,7 @@
 # ruvm (= Ruby simple Virtual Machine)
 
 def parse(program)
-  tokenize(program).map(&:convert)
+  read_lines tokenize(program)
 end
 
 def tokenize(string)
