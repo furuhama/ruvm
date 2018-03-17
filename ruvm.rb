@@ -1,5 +1,42 @@
 # ruvm (= Ruby simple Virtual Machine)
 
+class Evaluator
+  def initialize
+    @stack = []
+    @pc = 0
+  end
+
+  def evaluate(sequence)
+    while instructions = sequence[@pc]
+      dispatch instructions
+    end
+
+    @stack[0]
+  end
+
+  def dispatch(instructions)
+    case instructions.first
+    when :nop
+
+    when :add
+      push pop + pop
+
+    else
+      raise "Unknown Opecode: #{instructions}"
+    end
+
+    @pc += 1
+  end
+
+  def push(obj)
+    @stack.push obj
+  end
+
+  def pop
+    @stack.pop
+  end
+end
+
 class Parser
   class << self
     def parse(program)
