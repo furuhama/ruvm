@@ -47,7 +47,7 @@ describe 'ruvm' do
     end
   end
 
-  describe 'read_lines' do
+  describe '#read_lines' do
     subject { read_lines lines }
 
     context '1 word in each line' do
