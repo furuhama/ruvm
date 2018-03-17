@@ -2,8 +2,8 @@ require 'spec_helper'
 require './ruvm'
 
 describe 'ruvm' do
-  describe '#parse' do
-    subject { parse program }
+  describe '.parse' do
+    subject { Parser.parse program }
 
     let(:program) { "this is a 723
                     test program 100
@@ -11,8 +11,8 @@ describe 'ruvm' do
     it { is_expected.to eq [[:this, :is, :a, 723], [:test, :program, 100], [5, :versions]] }
   end
 
-  describe '#tokenize' do
-    subject { tokenize program }
+  describe '.tokenize' do
+    subject { Parser.tokenize program }
 
     context 'just string' do
       let(:program) { "this
@@ -34,8 +34,8 @@ describe 'ruvm' do
     end
   end
 
-  describe '#convert' do
-    subject { convert token }
+  describe '.convert' do
+    subject { Parser.convert token }
 
     context 'String' do
       let (:token) { 'hogehoge' }
@@ -56,8 +56,8 @@ describe 'ruvm' do
     end
   end
 
-  describe '#read_lines' do
-    subject { read_lines lines }
+  describe '.read_lines' do
+    subject { Parser.read_lines lines }
 
     context '1 word in each line' do
       let(:lines) { ["hoge", "10", "5.5"] }
