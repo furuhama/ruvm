@@ -42,6 +42,9 @@ class Evaluator
     when :mul
       push pop * pop
 
+    when :div
+      push pop / pop # this means [after-pushed] / [before-pushed] (returns integer)
+
     else
       raise "Unknown Opecode: #{instructions}"
     end
