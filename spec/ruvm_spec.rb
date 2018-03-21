@@ -24,6 +24,15 @@ describe 'ruvm' do
         end
       end
 
+      context ':pop' do
+        it do
+          evaluator.dispatch [:push, 100]
+          evaluator.dispatch [:pop]
+
+          is_expected.to eq []
+        end
+      end
+
       context ':add' do
         it do
           evaluator.dispatch [:push, 1]

@@ -25,6 +25,9 @@ class Evaluator
     when :push
       push instructions[1]
 
+    when :pop
+      pop
+
     when :add
       push pop + pop
 
