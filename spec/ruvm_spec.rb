@@ -81,6 +81,15 @@ describe 'ruvm' do
           is_expected.to eq [7]
         end
       end
+
+      context ':not' do
+        it do
+          evaluator.dispatch [:push, 30]
+          evaluator.dispatch [:not]
+
+          is_expected.to eq [false]
+        end
+      end
     end
   end
 
