@@ -36,6 +36,9 @@ class Evaluator
     when :add
       push pop + pop
 
+    when :sub
+      push pop - pop # this means [after-pushed] - [before-pushed]
+
     else
       raise "Unknown Opecode: #{instructions}"
     end

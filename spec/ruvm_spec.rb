@@ -51,6 +51,16 @@ describe 'ruvm' do
           is_expected.to eq [3]
         end
       end
+
+      context ':sub' do
+        it do
+          evaluator.dispatch [:push, 1]
+          evaluator.dispatch [:push, 2]
+          evaluator.dispatch [:sub]
+
+          is_expected.to eq [1]
+        end
+      end
     end
   end
 
