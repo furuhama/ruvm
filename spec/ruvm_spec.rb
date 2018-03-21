@@ -33,6 +33,15 @@ describe 'ruvm' do
         end
       end
 
+      context ':dup' do
+        it do
+          evaluator.dispatch [:push, 100]
+          evaluator.dispatch [:dup]
+
+          is_expected.to eq [100, 100]
+        end
+      end
+
       context ':add' do
         it do
           evaluator.dispatch [:push, 1]

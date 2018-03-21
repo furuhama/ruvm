@@ -28,6 +28,11 @@ class Evaluator
     when :pop
       pop
 
+    when :dup
+      popped = pop
+      push popped
+      push popped
+
     when :add
       push pop + pop
 
