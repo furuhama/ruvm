@@ -2,6 +2,27 @@ require 'spec_helper'
 require './ruvm'
 
 describe 'ruvm' do
+  describe 'Evaluator' do
+    let(:evaluator) { Evaluator.new }
+
+    describe '#dispatch' do
+      before { evaluator.dispatch instructions }
+      subject { evaluator.stack }
+
+      context ':nop' do
+        let(:instructions) { [:nop] }
+
+        it { is_expected.to eq [] }
+      end
+
+      context ':add' do
+        let(:instructions) { [:add, 1, 2] }
+
+        it { is_expected.to eq [3] }
+      end
+    end
+  end
+
   describe 'Parser' do
     describe '#parse' do
       subject { Parser.parse program }

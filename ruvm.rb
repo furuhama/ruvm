@@ -1,6 +1,8 @@
 # ruvm (= Ruby simple Virtual Machine)
 
 class Evaluator
+  attr_accessor :stack
+
   def initialize
     @stack = []
     @pc = 0
@@ -15,6 +17,12 @@ class Evaluator
   end
 
   def dispatch(instructions)
+    # read arguments & put them into @stack
+    instructions[1..-1].each do |inst|
+      @stack.push inst
+    end
+
+    # read & evaluate main instruction
     case instructions.first
     when :nop
 
