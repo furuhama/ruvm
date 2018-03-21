@@ -110,6 +110,12 @@ describe 'ruvm' do
           is_expected.to eq [false]
         end
       end
+
+      context 'Unknown Opecode' do
+        it do
+          expect { evaluator.dispatch [:thisisunknown] }.to raise_error(RuntimeError, 'Unknown Opecode: [:thisisunknown]')
+        end
+      end
     end
   end
 
