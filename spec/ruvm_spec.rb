@@ -90,6 +90,26 @@ describe 'ruvm' do
           is_expected.to eq [false]
         end
       end
+
+      context ':smaller' do
+        it do
+          evaluator.dispatch [:push, 30]
+          evaluator.dispatch [:push, 20]
+          evaluator.dispatch [:smaller]
+
+          is_expected.to eq [true]
+        end
+      end
+
+      context ':bigger' do
+        it do
+          evaluator.dispatch [:push, 30]
+          evaluator.dispatch [:push, 20]
+          evaluator.dispatch [:bigger]
+
+          is_expected.to eq [false]
+        end
+      end
     end
   end
 

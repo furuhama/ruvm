@@ -45,8 +45,15 @@ class Evaluator
     when :div
       push pop / pop # this means [after-pushed] / [before-pushed] (returns integer)
 
+    # boolean
     when :not
       push !pop
+
+    when :smaller
+      push pop < pop # this means [after-pushed] < [before-pushed]
+
+    when :bigger
+      push pop > pop # this means [after-pushed] > [before-pushed]
 
     else
       raise "Unknown Opecode: #{instructions}"
