@@ -6,19 +6,36 @@ describe 'ruvm' do
     let(:evaluator) { Evaluator.new }
 
     describe '#dispatch' do
-      before { evaluator.dispatch instructions }
       subject { evaluator.stack }
 
       context ':nop' do
         let(:instructions) { [:nop] }
 
-        it { is_expected.to eq [] }
+        it do
+          evaluator.dispatch instructions
+
+          is_expected.to eq []
+        end
+      end
+
+      context ':push' do
+        let(:instructions) { [:push, 100] }
+
+        it do
+          evaluator.dispatch instructions
+
+          is_expected.to eq [100]
+        end
       end
 
       context ':add' do
-        let(:instructions) { [:add, 1, 2] }
+        it do
+          evaluator.dispatch [:push, 1]
+          evaluator.dispatch [:push, 2]
+          evaluator.dispatch [:add]
 
-        it { is_expected.to eq [3] }
+          is_expected.to eq [3]
+        end
       end
     end
   end

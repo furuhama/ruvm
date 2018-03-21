@@ -17,14 +17,13 @@ class Evaluator
   end
 
   def dispatch(instructions)
-    # read arguments & put them into @stack
-    instructions[1..-1].each do |inst|
-      @stack.push inst
-    end
-
     # read & evaluate main instruction
     case instructions.first
     when :nop
+
+    # read arguments & put them into @stack
+    when :push
+      push instructions[1]
 
     when :add
       push pop + pop
